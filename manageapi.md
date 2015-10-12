@@ -23,12 +23,16 @@ app专场Banner（720*290）：{{$image_app_banner['image_path']}}
 
 #专场编辑-商品设置
 ```
-表格插件 请求地址
+表格插件 
+1.请求地址
 url: '/event/item?event_id=' +{{$id}} (专场id)
   param: {
    page_size: 20 //每页显示多少条数据
   }
-  
+2.请求参数
+id//专场id
+
+3.返回结果  
 商品设置下的数据字段
 商品ID：<%= id %>
 商品信息 ：<%= title %>
