@@ -98,8 +98,10 @@ define([], function () {
 ```
 审核：请求地址'/event/audit'
 排期：请求地址'/event/audit'
-
-审核排期：请求地址（'/event/remark?event_id=' + id）
+```
+#审核排期
+```
+请求地址（'/event/remark?event_id=' + id）
 字段：
 历史审核备注： <%= listHtml %>
 //审核排期
@@ -115,8 +117,10 @@ define([], function () {
     });
   });
 
-
-待上线状态再次审核: 请求地址（'/event/remark?event_id=' + id）
+```
+#待上线状态再次审核
+```
+请求地址（'/event/remark?event_id=' + id）
 字段:
 开始时间：<%= begin_at %>
 结束时间：<%= end_at %>
@@ -140,11 +144,5 @@ define([], function () {
   });
 
 
-
-
-
-
-  
-                    
 
 
