@@ -1,6 +1,8 @@
 #manage后台JS和API交互接口
 
-- [专场相关](#专场)  
+- [专场编辑](#专场)  
+- [专场编辑-商品设置](#专场) 
+- - [专场编辑](#专场)  
 
 #专场
 
@@ -17,7 +19,7 @@ app专场图（770*540）:{{$image_app_small['image_path']}}
 app专场Banner（720*290）：{{$image_app_banner['image_path']}}
 ```
 
-#商品设置
+#专场编辑-商品设置
 ```
 表格插件 请求地址
 url: '/event/item?event_id=' +{{$id}} (专场id)
