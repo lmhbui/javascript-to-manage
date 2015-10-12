@@ -4,9 +4,9 @@
 
 #专场
 
-#专场编辑页面
-#专场编辑-数据字段
+#专场编辑
 ```
+数据字段
 专场ID :{{$id}}
 专场品牌：{{$partner_brand['title']}}
 专场标题：{{$title}}
@@ -96,13 +96,13 @@ define([], function () {
 ```
 #审核
 ```
-审核排期：
-请求地址：'/event/remark?event_id=' + id
+审核：请求地址'/event/audit'
+排期：请求地址'/event/audit'
 
-字段
+审核排期：请求地址（'/event/remark?event_id=' + id）
+字段：
 历史审核备注： <%= listHtml %>
-
- //审核排期
+//审核排期
   table.opration('examine1', function (id) {
     $.get('/event/remark?event_id=' + id).done(function (res) {
       var data = {
@@ -116,9 +116,8 @@ define([], function () {
   });
 
 
-待上线状态：再次审核 请求地址：
-'/event/remark?event_id=' + id
-字段
+待上线状态再次审核: 请求地址（'/event/remark?event_id=' + id）
+字段:
 开始时间：<%= begin_at %>
 结束时间：<%= end_at %>
 状态：<%= status_kind %>
@@ -140,7 +139,6 @@ define([], function () {
       });
   });
 
-商家审核
 
 
 
