@@ -9,6 +9,11 @@
 #专场
 
 #专场编辑
+1.请求地址
+
+2.请求参数
+
+3.返回结果
 ```
 数据字段
 专场ID :{{$id}}
@@ -22,17 +27,20 @@ app专场Banner（720*290）：{{$image_app_banner['image_path']}}
 ```
 
 #专场编辑-商品设置
+1.请求地址
 ```
 表格插件 
-1.请求地址
 url: '/event/item?event_id=' +{{$id}} (专场id)
-  param: {
-   page_size: 20 //每页显示多少条数据
-  }
+```
 2.请求参数
+```
 id//专场id
-
-3.返回结果  
+param: {
+  page_size: 20 //每页显示多少条数据
+}
+```
+3.返回结果 
+```
 商品设置下的数据字段
 商品ID：<%= id %>
 商品信息 ：<%= title %>
@@ -46,15 +54,33 @@ id//专场id
   <a data-id="<%= id %>" data-name="<%= name %>" href="javascript:;" class="edit" title="查看">查看</a>
 </td>
 ```
+4.代码示例
+```
+require([], function () {
 
+    //表格插件
+    var table = $('#datatable').dataTable({
+        url: '/event/item?event_id=' + $('#event_id').val(),
+        param: {
+            page_size: 20 //每页显示多少条数据
+        }
+    });
+
+});
+```
 #专场管理页面
 #专场列表
+1.请求地址
 ```
-表格插件请求地址：
 url: '/event/list'
-
-专场列表各个字段：
-
+```
+2.请求参数
+```
+{
+}
+```
+3.返回结果
+```
 专场ID：<%= id %>
 创建时间 <%= create_at %>
 
@@ -78,10 +104,22 @@ url: '/event/list'
 ```
 
 #专场列表Tab统计数字 
+1.请求地址
 ```
-请求地址：
 '/event/count'
-
+```
+2.请求参数
+```
+{
+}
+```
+3.返回结果
+```
+{
+}
+```
+4.示例
+```
 Tab统计数字：
 define([], function () {
     var i = $('.dc-tab').find('i');
@@ -105,13 +143,66 @@ define([], function () {
 #审核
 ```
 审核：请求地址'/event/audit'
+
+示例:
+ function examine(html) {
+            $.jBox(html, {
+                width: 600,
+                height: 500,
+                title: "商家审核",
+                buttons: buttons,
+                submit: function (v, h, f) {
+                    if (v) {
+                        var status = $('input[name=status]:checked').val();
+                        if (status == -2) {
+                            if (!$('textarea[name=remark]').val()) {
+                                alert('不通过时审核备注必填');
+                                return false;
+                            }
+                        }
+                        var parms = $('#examine-form').serialize();
+                        $.post('/event/audit', parms, function (res) {
+                            refresh(res);
+                        });
+                    }
+                }
+            });
+        }
+
 排期：请求地址'/event/audit'
+示例
+function schedule(html, width, height, title) {
+            $.jBox(html, {
+                width: width,
+                height: height,
+                title: title,
+                buttons: buttons,
+                submit: function (v, h, f) {
+                    if (v) {
+                        $.post('/event/audit', $('#examine-form1').serialize(), function (res) {
+                            refresh(res);
+                        });
+                    }
+                }
+            });
+        }
 ```
 #审核排期
+1.请求地址
 ```
-请求地址（'/event/remark?event_id=' + id）
-字段：
+'/event/remark?event_id=' + id
+```
+2.请求参数
+```
+{
+}
+```
+3.返回结果
+```
 历史审核备注： <%= listHtml %>
+```
+4.示例
+```
 //审核排期
   table.opration('examine1', function (id) {
     $.get('/event/remark?event_id=' + id).done(function (res) {
@@ -127,13 +218,23 @@ define([], function () {
 
 ```
 #待上线状态再次审核
+1.请求地址
 ```
-请求地址（'/event/remark?event_id=' + id）
-字段:
+'/event/remark?event_id=' + id
+```
+2.请求参数
+```
+{
+}
+```
+3.返回结果
+```
 开始时间：<%= begin_at %>
 结束时间：<%= end_at %>
 状态：<%= status_kind %>
-
+```
+4.示例
+```
  //待上线状态:再次审核
   table.opration('schedule', function (id, arr) {
       arr = arr.split(',');
@@ -150,7 +251,7 @@ define([], function () {
           schedule(html, 380, 180, '修改排期');
       });
   });
-
+```
 
 
 
