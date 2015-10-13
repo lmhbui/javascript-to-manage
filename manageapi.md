@@ -1652,6 +1652,33 @@ event_id:110
     "message": "操作成功"
 }
 ```
+
+#修改排期
+1.请求地址
+```
+event/remark?event_id=121
+```
+2.请求参数
+```
+event_id:120
+```
+
+3.返回结果
+```
+{
+    "errorcode": 0,
+    "datatable": {
+        "list": [
+            {
+                "name": "郭圣",
+                "remark": "",
+                "create_at": "2015-10-13 16:40:30"
+            }
+        ],
+        "total_count": 1
+    }
+}
+```
 #专场编辑页面
 1.请求地址
 ```
